@@ -12,9 +12,13 @@ public class MyRunner implements ApplicationRunner {
     @Value("${myboot.name}")
     private String name;
 
+    @Value("${myboot.age}")
+    private int age;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("${myboot.nam}  = " + name);
+        System.out.println("${myboot.name}  = " + name);
+        System.out.println("${myboot.age}  = " + age);
 
         System.out.println("VM 아규먼트 foo : " + args.containsOption("foo"));
         System.out.println("Program 아규먼트 bar : " + args.containsOption("bar"));
