@@ -10,5 +10,9 @@ public class MyRunner implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("VM 아규먼트 foo : " + args.containsOption("foo"));
         System.out.println("Program 아규먼트 bar : " + args.containsOption("bar"));
+
+        //Argument 목록 출력하기
+        args.getOptionNames()//Set<String>
+                .forEach(name -> System.out.println(name));
     }
 }
