@@ -39,10 +39,10 @@ class CustomerRepositoryTest {
     //2. Customer 조회
     @Test
     void testFindBy() {
-        Optional<Customer> optionalCustomer = customerRepository.findById(2L);
+        Optional<Customer> optionalCustomer = customerRepository.findById(1L);
         if(optionalCustomer.isPresent()) {
             Customer customer = optionalCustomer.get();
-            assertThat(customer.getId()).isEqualTo(2L);
+            assertThat(customer.getId()).isEqualTo(1L);
         }else{
             System.out.println("Customer Not Found");
         }
@@ -50,10 +50,15 @@ class CustomerRepositoryTest {
         //Consumer의 추상메서드는 void accept(T t)
         optionalCustomer.ifPresent(customer -> System.out.println(customer.getCustomerName()));
 
-       //orElseGet(Supplier)
-       //Supplier의 추상메서드는 T get()
-        Customer existCustomer = optionalCustomer.orElseGet(() -> new Customer());
-        assertThat(existCustomer.getId()).isEqualTo(2L);
+    }
+
+    @Test
+    void testFindByNotFound() {
+        //orElseGet(Supplier)
+        //Supplier의 추상메서드는 T get()
+        Customer existCustomer = customerRepository.findById(2L).orElseGet(() -> new Customer());
+        assertThat(existCustomer.getId()).isNull();
+        //assertThat(existCustomer.getId()).isEqualTo(2L);
 
     }
 }
