@@ -68,12 +68,13 @@ class CustomerRepositoryTest {
     }
 
     @Test
+    @Rollback(value = false)
     void testUpdate() {
         //조회를 하고 setter 호출하면 업데이트 됨
         Customer customer = customerRepository.findByCustomerId("A002")
                 .orElseThrow(() -> new RuntimeException("Customer Not Found"));
         customer.setCustomerName("스프링부트2");
-        customerRepository.save(customer);
+        //customerRepository.save(customer);
         assertThat(customer.getCustomerName()).isEqualTo("스프링부트2");
     }
 }
