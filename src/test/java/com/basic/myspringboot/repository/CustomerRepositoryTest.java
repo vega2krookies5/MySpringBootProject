@@ -39,12 +39,18 @@ class CustomerRepositoryTest {
     //2. Customer 조회
     @Test
     void testFindBy() {
-        Optional<Customer> optionalCustomer = customerRepository.findById(2L);
+        Optional<Customer> optionalCustomer = customerRepository.findById(1L);
         if(optionalCustomer.isPresent()) {
             Customer customer = optionalCustomer.get();
-            assertThat(customer.getId()).isEqualTo(2L);
+            assertThat(customer.getId()).isEqualTo(1L);
         }else{
             System.out.println("Customer Not Found");
         }
+        //ifPresent(Consumer)
+        //Consumer의 추상메서드는 void accept(T t)
+        optionalCustomer.ifPresent(customer -> System.out.println(customer.getCustomerName()));
+
+
+
     }
 }
