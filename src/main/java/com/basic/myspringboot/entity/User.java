@@ -24,3 +24,4 @@ public class User {
     @Column(nullable = false, updatable = false)
     @CreationTimestamp
     private LocalDateTime createdAt = LocalDateTime.now();
+}
