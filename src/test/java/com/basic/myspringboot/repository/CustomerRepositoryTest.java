@@ -60,5 +60,8 @@ class CustomerRepositoryTest {
         assertThat(existCustomer.getId()).isNull();
         //assertThat(existCustomer.getId()).isEqualTo(2L);
 
+        //public <X extends Throwable> T orElseThrow(Supplier<? extends X> exceptionSupplier)
+        Customer notFoundCustomer = customerRepository.findById(2L)
+                .orElseThrow(() -> new RuntimeException("Customer Not Found"));
     }
 }
