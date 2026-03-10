@@ -15,6 +15,6 @@ public class Customer {
     private String customerId;
 
     @Column(nullable = false)
-    private String cutomerName;
+    private String customerName;
 
 }

@@ -10,5 +10,7 @@ class CustomerRepositoryTest {
     @Autowired
     CustomerRepository customerRepository;
 
+    //1. Customer 등록
+
 
 }
