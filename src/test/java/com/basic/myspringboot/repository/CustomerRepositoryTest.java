@@ -24,7 +24,8 @@ class CustomerRepositoryTest {
         //When(실행단계)
         Customer addCustomer = customerRepository.save(customer);
         //Then(검증단계)
-        assertThat();
+        assertThat(addCustomer).isNotNull();
+        assertThat(addCustomer.getCustomerName()).isEqualTo("스프링부트");
     }
 
 }
