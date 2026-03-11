@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @Slf4j
@@ -41,7 +42,8 @@ public class UserRestController {
     //Id로 User 조회
     @GetMapping("/{id}")
     public User getUserById(@PathVariable Long id) {
-        User existUser = userRepository.findById(id) //Optional<User>
+        Optional<User> optionalUser = userRepository.findById(id);
+        User existUser = optionalUser //Optional<User>
                 .orElseThrow(() -> new BusinessException("User Not Found", HttpStatus.NOT_FOUND));//User
         return existUser;
     }
@@ -58,7 +60,8 @@ public class UserRestController {
     //User 삭제하기
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
-        User user = userRepository.findById(id)
+        Optional<User> optionalUser = userRepository.findById(id);
+        User user = optionalUser
                 .orElseThrow(() -> new BusinessException("User Not Found", HttpStatus.NOT_FOUND));
         userRepository.delete(user);
         //return ResponseEntity.ok(user);
