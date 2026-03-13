@@ -14,7 +14,6 @@ public class UserInfoController {
 
     @PostMapping("/new")
     public String addNewUser(@RequestBody UserInfo userInfo) {
-
         return service.addUser(userInfo);
     }
 }
